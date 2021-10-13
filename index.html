@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://bootswatch.com/5/darkly/bootstrap.min.css">
-    <title>Note List</title>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <title>Note List</title>
 </head>
 
 <body>
     <div class="container mt-4">
-        <h1 class="display-4 text-center">Note List</h1>
+        <h1 class="display-2 text-center">Note List</h1>
         <button type="button" class="btn btn-outline-light" id="toggle-btn">Create note</button>
         <form id="note-form">
             <div class="form-group">
@@ -33,11 +33,13 @@
                 <label for="content">Content:</label>
                 <input type="text" id="content" class="form-control" required>
             </div>
+
             <div class="d-grid mt-4">
                 <button type="submit" id="btn-submit" class="btn btn-primary btn-lg">Submit</button>
             </div>
         </form>
-        <table class="table table-sm mt-4">
+        <table class="table table-sm mt-4 caption-top" id="note-table">
+            <caption class="display-4">List of notes</caption>
             <thead class="table-dark">
                 <tr>
                     <th scope="col">Name</th>
@@ -45,10 +47,60 @@
                     <th scope="col">Category</th>
                     <th scope="col">Content</th>
                     <th scope="col">Dates</th>
-                    <th scope="col">Actions</th>
+                    <th scope="col">
+                        <button type="button" class="btn btn-secondary" id="open-archive"><i class="fas fa-archive"></i></button>
+                        <button type="button" class="btn btn-secondary"><i class="fas fa-trash"></i></button>
+                    </th>
                 </tr>
             </thead>
             <tbody id="note-list">
+            </tbody>
+        </table>
+
+        <table class="table table-sm mt-4 d-none caption-top" id="archive-table">
+            <caption class="display-4">List of archives</caption>
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Created</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Content</th>
+                    <th scope="col">Dates</th>
+                    <th scope="col">
+                        <button type="button" class="btn btn-secondary" id="open-active"><i class="fas fa-book-open"></i></button>
+                        <button type="button" class="btn btn-secondary"><i class="fas fa-trash"></i></button>
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="archive-list">
+            </tbody>
+        </table>
+
+        <table class="table table-sm mt-4 caption-top">
+            <caption class="display-4">Summary</caption>
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Note Category</th>
+                    <th scope="col">Active</th>
+                    <th scope="col">Archived</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Task</td>
+                    <td id="active-task">0</td>
+                    <td id="archived-task">0</td>
+                </tr>
+                <tr>
+                    <td>Random Thought</td>
+                    <td id="active-thought">0</td>
+                    <td id="archived-thought">0</td>
+                </tr>
+                <tr>
+                    <td>Idea</td>
+                    <td id="active-idea">0</td>
+                    <td id="archived-idea">0</td>
+                </tr>
             </tbody>
         </table>
     </div>
